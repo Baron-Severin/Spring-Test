@@ -8,9 +8,16 @@
 		<!-- property name must exactly match java member variable -->
 		<!-- property ref must exactly match xml bean id -->
 		<!-- classes must be java beans (getters, setters, empty constructor) -->
-		<property name="itemRepository" ref="repo"/>
+		<property name="itemRepository" ref="repo" />
+	</bean>
+
+	<bean id="repo" class="com.javatunes.persistence.InMemoryItemRepository" />
+
+	<!-- init-method runs after all dependencies have been set -->
+	<bean id="macysBean" class="com.macys.MyMacysBean" init-method="init">
+		<property name="itemRepository" ref="repo" />
 	</bean>
 	
-	<bean id="repo" class="com.javatunes.persistence.InMemoryItemRepository"/>
-	
+	<bean id="registry" class="com.macys.Registry" scope="prototype"></bean>
+
 </beans>
