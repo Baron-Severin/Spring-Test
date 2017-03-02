@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="musicCatalog" class="com.javatunes.service.CatalogImpl">
+		<!-- property name must exactly match java member variable -->
+		<!-- property ref must exactly match xml bean id -->
+		<!-- classes must be java beans (getters, setters, empty constructor) -->
+		<property name="itemRepository" ref="repo"/>
+	</bean>
+	
+	<bean id="repo" class="com.javatunes.persistence.InMemoryItemRepository"/>
+	
+</beans>

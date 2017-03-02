@@ -1,0 +1,7 @@
+com/javatunes/domain/MusicItem.class
+com/javatunes/persistence/InMemoryItemRepository.class
+com/javatunes/service/CatalogImpl.class
+com/javatunes/persistence/CatalogData.class
+com/javatunes/domain/MusicCategory.class
+com/javatunes/persistence/ItemRepository.class
+com/javatunes/service/Catalog.class
