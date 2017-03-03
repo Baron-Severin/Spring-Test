@@ -1,0 +1,10 @@
+/Users/m712244/Documents/workspace-sts-3.8.3.RELEASE/Lab3.1/src/main/java/com/javatunes/config/SpringConfig.java
+/Users/m712244/Documents/workspace-sts-3.8.3.RELEASE/Lab3.1/src/main/java/com/javatunes/config/SpringServicesConfig.java
+/Users/m712244/Documents/workspace-sts-3.8.3.RELEASE/Lab3.1/src/main/java/com/javatunes/domain/MusicItem.java
+/Users/m712244/Documents/workspace-sts-3.8.3.RELEASE/Lab3.1/src/main/java/com/javatunes/service/Catalog.java
+/Users/m712244/Documents/workspace-sts-3.8.3.RELEASE/Lab3.1/src/main/java/com/javatunes/persistence/CatalogData.java
+/Users/m712244/Documents/workspace-sts-3.8.3.RELEASE/Lab3.1/src/main/java/com/javatunes/persistence/InMemoryItemRepository.java
+/Users/m712244/Documents/workspace-sts-3.8.3.RELEASE/Lab3.1/src/main/java/com/javatunes/persistence/ItemRepository.java
+/Users/m712244/Documents/workspace-sts-3.8.3.RELEASE/Lab3.1/src/main/java/com/javatunes/domain/MusicCategory.java
+/Users/m712244/Documents/workspace-sts-3.8.3.RELEASE/Lab3.1/src/main/java/com/javatunes/config/SpringRepositoryConfig.java
+/Users/m712244/Documents/workspace-sts-3.8.3.RELEASE/Lab3.1/src/main/java/com/javatunes/service/CatalogImpl.java
