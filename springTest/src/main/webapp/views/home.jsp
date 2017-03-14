@@ -33,7 +33,7 @@
 		<header>
 			<!-- header -->
 
-			<h1>JavaTunes</h1>
+			<h1>SevTunes</h1>
 		</header>
 		<!-- end of header -->
 

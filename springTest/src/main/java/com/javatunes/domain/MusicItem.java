@@ -13,13 +13,26 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Transient;
+
+@Entity
 public class MusicItem {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String title, artist;
 	private Date releaseDate;
 	private BigDecimal price;
+	@Enumerated(EnumType.STRING)
 	private MusicCategory musicCategory;
+	@Transient
 	private SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 
 	public MusicItem() {
@@ -45,18 +58,6 @@ public class MusicItem {
 		this.setPrice(price);
 		this.setMusicCategory(musicCategory);
 	}
-	
-	// For InMemory Usage
-	public MusicItem(Long id, String title, String artist, String releaseDate,
-			BigDecimal price, MusicCategory musicCategory) {
-		this.setId(id);
-		this.setTitle(title);
-		this.setArtist(artist);
-		this.setReleaseDateString(releaseDate);
-		this.setPrice(price);
-		this.setMusicCategory(musicCategory);
-	}
-	
 
 	public String getTitle() {
 		return title;

@@ -14,6 +14,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import com.javatunes.domain.MusicCategory;
 import com.javatunes.domain.MusicItem;
@@ -22,9 +23,6 @@ public class JpaItemRepository implements ItemRepository {
 	
 	@PersistenceContext
 	private EntityManager em;
-	
-	private List<MusicItem> catalogData = new CatalogData();
-	private Integer maxSearchResults = 30;
 
 	public MusicItem get(Long id) {
 		return em.find(MusicItem.class,id);
@@ -42,15 +40,14 @@ public class JpaItemRepository implements ItemRepository {
 	
 	@Override
 	public Collection<MusicItem> getAll() {
-		// TODO Auto-generated method stub
-		
-//		return null;
+		Query query = em.createQuery("FROM musicitem;");
+		return (Collection<MusicItem>) query.getResultList();
 	}
 
 	@Override
 	public Collection<MusicItem> searchByArtistTitle(String keyword) {
-		// TODO Auto-generated method stub
-		return null;
+		Query query = em.createQuery("FROM MusicItem mi WHERE lower(mi.artist) LIKE lower('%" + keyword+"%')");
+		return (Collection<MusicItem>) query.getResultList();
 	}
 
 	@Override

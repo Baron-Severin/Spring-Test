@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.javatunes.domain.MusicCategory;
+import com.javatunes.domain.MusicItem;
 import com.javatunes.service.Catalog;
 
 @Controller
@@ -57,7 +58,12 @@ public class HomeController {
 		if (keyword == null || keyword.length() == 0) {
 			search.setMatches(cat.findByCategory(search.getCategory()));
 		} else {
-			search.setMatches(cat.findByKeyword(keyword));
+			Collection<MusicItem> items = cat.findByKeyword(keyword);
+			System.out.println("SEVTEST: BEGIN RESULTS");
+			for (MusicItem i : items) {
+				System.out.println("SEVTEST: " + i.getTitle());
+			}
+			search.setMatches(items);
 		}
 		
 		// TODO: Get keyword from Search bean

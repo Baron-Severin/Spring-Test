@@ -40,6 +40,6 @@ public class CatalogData extends ArrayList<MusicItem>{
 	}
 
 	   private void add(Integer id,String title, String artist,String releaseDate, String price, MusicCategory musicCategory){
-	     this.add(new MusicItem((long)id, title, artist, releaseDate, new BigDecimal(price), musicCategory ));
+//	     this.add(new MusicItem((long)id, title, artist, releaseDate, new BigDecimal(price), musicCategory ));
 	   }
 }
