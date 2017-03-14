@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="javatunesEmf" />
+	</bean>
+
+	<tx:annotation-driven />
+
+	<tx:advice id="serviceAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="persistBatch" propagation="REQUIRED" />
+			<tx:method name="persist" propagation="REQUIRED" />
+			<tx:method name="find*" propagation="REQUIRED" read-only="true" />
+			<tx:method name="size" propagation="NEVER" />
+			<tx:method name="remove*" propagation="REQUIRED" />
+		</tx:attributes>
+	</tx:advice>
+
+	<tx:advice id="daoAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="persistBatch" propagation="REQUIRED" />
+			<tx:method name="persist" propagation="REQUIRED" />
+			<tx:method name="get*" propagation="REQUIRED" read-only="true" />
+			<tx:method name="size" propagation="NEVER" />
+			<tx:method name="remove*" propagation="REQUIRED" />
+		</tx:attributes>
+	</tx:advice>
+
+	<tx:advice id="testAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="scenario*" propagation="REQUIRED" />
+		</tx:attributes>
+	</tx:advice>
+
+
+	<aop:config>
+		<aop:pointcut id="serviceOperations"
+			expression="execution(* com.javatunes.service.*.*(..))" />
+		<aop:pointcut id="persistenceOperations"
+			expression="execution(* com.javatunes.persistence.*.*(..))" />
+		<aop:pointcut id="testOperations"
+			expression="execution(* com.javatunes.domain.*.*(..))" />
+
+		<aop:advisor pointcut-ref="serviceOperations" advice-ref="serviceAdvice" />
+		<aop:advisor pointcut-ref="persistenceOperations" advice-ref="daoAdvice" />
+		<aop:advisor pointcut-ref="testOperations" advice-ref="testAdvice" />
+	</aop:config>
+
+</beans>
