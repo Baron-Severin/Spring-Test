@@ -61,7 +61,7 @@
  			        <!-- TODO: Finish path attribute to bind to keyword property -->
 					Keyword Search: 
 					<form:input size='20' path='keyword'/>  
-					<form:select path="category" items="${categories}" itemLabel="name" itemValue="ordinal"/>
+					<form:select path="category" items="${categories}"/>
 					
 	  				<%-- Optional part					     
 					     Category Search: <form:select path="category" items="${categories}"/>

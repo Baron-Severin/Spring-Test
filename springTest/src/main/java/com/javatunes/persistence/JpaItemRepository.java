@@ -58,8 +58,8 @@ public class JpaItemRepository implements ItemRepository {
 
 	@Override
 	public Collection<MusicItem> searchByCategory(MusicCategory category) {
-		// TODO Auto-generated method stub
-		return null;
+		Query query = em.createQuery("FROM MusicItem mi WHERE mi.musicCategory = '" + category +"'");
+		return (Collection<MusicItem>) query.getResultList();
 	}
 
 }
