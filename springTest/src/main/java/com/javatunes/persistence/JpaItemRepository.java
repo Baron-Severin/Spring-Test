@@ -52,8 +52,8 @@ public class JpaItemRepository implements ItemRepository {
 
 	@Override
 	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
+		Query query = em.createQuery("SELECT count(*) FROM MusicItem");
+		return (int) query.getSingleResult();
 	}
 
 	@Override
